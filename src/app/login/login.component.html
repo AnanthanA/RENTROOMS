@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form #logInForm="ngForm" autocomplete="off">
+                <div class="align-center card-container">
+                    <mat-card class="card-style">
+                        <h2 class="txt-center">Login</h2>
+                        <mat-card-content>
+                            <div class="form-container">
+                                <div *ngIf="showErr" class="error-msg">{{errMsg}}</div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>E-mail</mat-label>
+                                    <input matInput name="_email" [(ngModel)]="model.emailId" required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Password</mat-label>
+                                    <input matInput name="_password" type="password" [(ngModel)]="model.password" required>
+                                </mat-form-field>
+                            </div>
+                            <div class="form-container">
+                                <button type="submit" mat-raised-button color="warn" class="submit-btn" (click)="submit(logInForm)" [disabled]="submitted">
+                                    Submit
+                                </button>
+                                <span>Don't have an account?<button routerLink="/signup" type="button" mat-button color="primary">Sign up here!</button></span>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

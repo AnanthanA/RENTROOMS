@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form #signUpForm="ngForm" autocomplete="off">
+                <div class="align-center card-container">
+                    <mat-card class="card-style">
+                        <h2 class="txt-center">Sign up</h2>
+                        <mat-card-content>
+                            <div class="form-container">
+                                <div *ngIf="showErr" class="error-msg">{{errMsg}}</div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>E-mail</mat-label>
+                                    <input matInput name="_email" [(ngModel)]="model.emailId" required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Password</mat-label>
+                                    <input matInput name="_password" type="password" [(ngModel)]="model.password" required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Mobile number</mat-label>
+                                    <input matInput name="_mobile_number" [(ngModel)]="model.mobileNumber" required minlength="10" maxlength="10">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>User role</mat-label>
+                                    <mat-select name="_user_role" [(ngModel)]="model.type" required>
+                                        <mat-option value="Admin">Admin</mat-option>
+                                        <mat-option value="User">User</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Seller name</mat-label>
+                                    <input matInput name="_seller_name" [(ngModel)]="model.sellerName" required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Hotel name</mat-label>
+                                    <input matInput name="_hotel_name" [(ngModel)]="model.hotelName" required>
+                                </mat-form-field>
+                                <div class="file-div">
+                                    <label for="_hotel_image_file" class="btn">&nbsp;&nbsp;Hotel image *&nbsp;&nbsp;</label>
+                                    <input id="_hotel_image_file" (change)="onSelectFile($event)" type="file" accept="image/jpeg, image/png">
+                                </div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Hotel address</mat-label>
+                                    <textarea matInput name="_hotel_address" [(ngModel)]="model.hotelAddress" required></textarea>
+                                </mat-form-field>
+                            </div>
+                            <div class="form-container">
+                                <button type="submit" mat-raised-button color="warn" class="submit-btn" (click)="submit(signUpForm)" [disabled]="submitted">
+                                    Submit
+                                </button>
+                                <span>Already have an account?<button routerLink="/login" type="button" mat-button color="primary">Login here!</button></span>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
